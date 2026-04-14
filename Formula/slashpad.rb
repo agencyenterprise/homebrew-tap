@@ -1,8 +1,8 @@
 class Slashpad < Formula
   desc "Desktop AI command palette powered by Claude"
   homepage "https://github.com/agencyenterprise/slashpad"
-  url "https://github.com/agencyenterprise/slashpad/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "eb3ca1cb65f71b6575edd5af57b5eb8ed9385188fa5b0adb218cd7ae83b0d82d"
+  url "https://github.com/agencyenterprise/slashpad/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "1eb84093a4d6a7b5941827c03b32b7175fb4ff7c9a6fdb6323684c3894a8c7d4"
   license "MIT"
 
   depends_on "rust" => :build
@@ -21,13 +21,23 @@ class Slashpad < Formula
     end
   end
 
+  service do
+    run opt_bin/"slashpad"
+    keep_alive true
+    log_path var/"log/slashpad.log"
+    error_log_path var/"log/slashpad.log"
+  end
+
   def caveats
     <<~EOS
-      Slashpad requires an Anthropic API key. Launch the app and press
-      Ctrl+Space to open the palette, then type /settings to configure it.
+      To start Slashpad now and have it launch at login:
+        brew services start slashpad
 
-      Grant Accessibility permissions in System Settings > Privacy & Security
-      for the global hotkey to work.
+      Authenticate with Claude by running `claude login` in your terminal,
+      then press Ctrl+Space to open the Slashpad palette.
+
+      To use an Anthropic API key instead, click the Slashpad icon in the
+      menu bar to open Settings and uncheck "Use Claude subscription".
     EOS
   end
 
