@@ -15,11 +15,11 @@ class Slashpad < Formula
 
   resource "bun" do
     if Hardware::CPU.arm?
-      url "https://github.com/agencyenterprise/slashpad/archive/refs/tags/v0.1.2.tar.gz"
-      sha256 "829f6ef119562b41107b558f656fceab183c405121453093e517210a74edd897"
+      url "https://github.com/oven-sh/bun/releases/download/bun-v#{BUN_VERSION}/bun-darwin-aarch64.zip"
+      sha256 "6c4bb87dd013ed1a8d6a16e357a3d094959fd5530b4d7061f7f3680c3c7cea1c"
     else
-      url "https://github.com/agencyenterprise/slashpad/archive/refs/tags/v0.1.2.tar.gz"
-      sha256 "829f6ef119562b41107b558f656fceab183c405121453093e517210a74edd897"
+      url "https://github.com/oven-sh/bun/releases/download/bun-v#{BUN_VERSION}/bun-darwin-x64.zip"
+      sha256 "0f58c53a3e7947f1e626d2f8d285f97c14b7cadcca9c09ebafc0ae9d35b58c3d"
     end
   end
 
